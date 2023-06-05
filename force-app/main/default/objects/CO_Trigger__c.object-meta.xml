@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Survey_Response__c</fullName>
+        <externalId>false</externalId>
+        <label>Survey Response</label>
+        <nameField>
+            <displayFormat>SR-{0000}</displayFormat>
+            <label>Survey Response Number</label>
+        </nameField>
+        <fields>
+            <fullName>Survey__c</fullName>
+            <externalId>false</externalId>
+            <label>Survey</label>
+            <required>true</required>
+            <type>Lookup</type>
+        </fields>
+        <fields>
+            <fullName>Survey_Question__c</fullName>
+            <externalId>false</externalId>
+            <label>Survey Question</label>
+            <required>true</required>
+            <type>Lookup</type>
+        </fields>
+        <fields>
+            <fullName>Answer__c</fullName>
+            <externalId>false</externalId>
+            <label>Answer</label>
+            <required>true</required>
+            <type>Text</type>
+        </fields>
+        <fields>
+            <fullName>Response_Status__c</fullName>
+            <externalId>false</externalId>
+            <label>Response Status</label>
+            <required>true</required>
+            <type>Picklist</type>
+            <valueSet>
+                <value>Completed</value>
+            </valueSet>
+        </fields>
+    </fields>
+</CustomObject>
