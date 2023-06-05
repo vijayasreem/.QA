@@ -1,43 +1,72 @@
+get(surveyResponse.Survey_Question__c) == 'Rating'){
+                    //Create a survey response choice record
+                    Survey_Response_Choice__c surveyResponseChoice = new Survey_Response_Choice__c();
+                    //Set the survey response and rating answer fields
+                    surveyResponseChoice.Survey_Response__c = surveyResponse.Id;
+                    surveyResponseChoice.Rating_Answer__c = surveyResponse.Rating_Answer__c;
+                    //Add the survey response choice to the list
+                    surveyResponseChoices.add(surveyResponseChoice);
+                }
+            }
+        }
+    }
+    //Insert the survey response choices
+    insert surveyResponseChoices;
+}
+
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>Survey_Response__c</fullName>
         <externalId>false</externalId>
         <label>Survey Response</label>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
         <nameField>
-            <displayFormat>SR-{0000}</displayFormat>
-            <label>Survey Response Number</label>
+            <label>Survey Response</label>
+            <trackTrending>false</trackTrending>
         </nameField>
-        <fields>
-            <fullName>Survey__c</fullName>
-            <externalId>false</externalId>
-            <label>Survey</label>
-            <required>true</required>
-            <type>Lookup</type>
-        </fields>
         <fields>
             <fullName>Survey_Question__c</fullName>
             <externalId>false</externalId>
             <label>Survey Question</label>
             <required>true</required>
+            <trackTrending>false</trackTrending>
             <type>Lookup</type>
+            <unique>false</unique>
         </fields>
         <fields>
-            <fullName>Answer__c</fullName>
+            <fullName>Text_Answer__c</fullName>
             <externalId>false</externalId>
-            <label>Answer</label>
-            <required>true</required>
-            <type>Text</type>
+            <label>Text Answer</label>
+            <trackTrending>false</trackTrending>
+            <type>TextArea</type>
+            <unique>false</unique>
         </fields>
         <fields>
-            <fullName>Response_Status__c</fullName>
+            <fullName>Single_Choice_Answer__c</fullName>
             <externalId>false</externalId>
-            <label>Response Status</label>
-            <required>true</required>
+            <label>Single Choice Answer</label>
+            <trackTrending>false</trackTrending>
             <type>Picklist</type>
-            <valueSet>
-                <value>Completed</value>
-            </valueSet>
+            <unique>false</unique>
+        </fields>
+        <fields>
+            <fullName>Multi_Choice_Answer__c</fullName>
+            <externalId>false</externalId>
+            <label>Multi Choice Answer</label>
+            <trackTrending>false</trackTrending>
+            <type>Multipicklist</type>
+            <unique>false</unique>
+        </fields>
+        <fields>
+            <fullName>Rating_Answer__c</fullName>
+            <externalId>false</externalId>
+            <label>Rating Answer</label>
+            <trackTrending>false</trackTrending>
+            <type>Number</type>
+            <unique>false</unique>
         </fields>
     </fields>
 </CustomObject>
