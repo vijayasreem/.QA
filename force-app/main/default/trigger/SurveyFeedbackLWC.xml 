@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Trigger xmlns="http://soap.sforce.com/2006/04/metadata">
+    <ApexTrigger>
+        <apiVersion>49.0</apiVersion>
+        <status>Active</status>
+        <description>Validate survey responses</description>
+        <triggerName>surveyResponse</triggerName>
+        <sourceEntity>Survey_Response__c</sourceEntity>
+        <triggerType>before</triggerType>
+        <type>Survey_Response__c</type>
+        <type>Survey__c</type>
+        <type>Question__c</type>
+        <type>Text</type>
+        <type>Single Choice</type>
+        <type>Multi Choice</type>
+        <type>Rating</type>
+        <lastModifiedDate>2020-07-30T14:12:19.000Z</lastModifiedDate>
+    </ApexTrigger>
+</Trigger>
