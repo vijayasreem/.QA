@@ -1,0 +1,36 @@
+<aura:component>
+
+<aura:attribute name="testUserStory" type="String" default="Test user story"/>
+
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+<aura:method name="myMethod" action="{!c.myMethod}">
+    <aura:attribute name="testUserStory" type="String"/>
+</aura:method>
+
+<div>
+    {!v.testUserStory}
+</div>
+
+</aura:component>
+
+<!-- Component Controller -->
+<aura:controller>
+    <aura:method name="myMethod" action="{!c.myMethod}">
+        <aura:attribute name="testUserStory" type="String"/>
+    </aura:method>
+</aura:controller>
+
+<!-- Component Helper -->
+<aura:component>
+    <aura:helper>
+        ({
+            doInit: function (component, event, helper) {
+                //Initialize your attribute with default value
+                component.set('v.testUserStory', 'Test user story');
+            },
+            myMethod: function (component, event, helper) {
+                //Implementation for your method
+            }
+        })
+</aura:component>

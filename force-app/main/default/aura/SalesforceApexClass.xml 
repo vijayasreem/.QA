@@ -1,0 +1,8 @@
+<aura:component>
+    <aura:attribute name="message" type="String" />
+
+    <p>{!v.message}</p>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:EventName" action="{!c.handleEvent}" />
+</aura:component>
