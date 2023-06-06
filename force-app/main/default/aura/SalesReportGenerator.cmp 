@@ -1,0 +1,30 @@
+<aura:component>
+
+	<aura:attribute name="name" type="String" default="Test User Story" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	
+	<aura:registerEvent name="TestEvent" type="c:TestEvent"/>
+	
+	<!-- Component markup goes here -->
+	<div>
+		<p>{!v.name}</p>
+	</div>
+	
+</aura:component>
+
+
+<!-- controller -->
+({
+    doInit : function(component, event, helper) {
+        var evt = component.getEvent("TestEvent");
+        evt.setParams({
+            "name" : "Test User Story"
+        });
+        evt.fire();
+    }
+})
+
+<!-- TestEvent.evt -->
+<aura:event type="COMPONENT" description="Test User Story Event">
+	<aura:attribute name="name" type="String" />
+</aura:event>
