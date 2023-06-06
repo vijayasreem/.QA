@@ -1,50 +1,34 @@
-from flask import Flask, request
-from elasticsearch import Elasticsearch
+#Flask API
+
+from flask import Flask, request, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
-# Connect to elasticsearch
-es = Elasticsearch()
+@app.route('/register', methods=['POST'])
+def register():
+    # get the post data
+    post_data = request.get_json()
+    # encrypt the password
+    password = generate_password_hash(post_data.get('password'))
+    # store the encrypted password in the database
+    # ...
+    # return a response
+    return jsonify({'message': 'User registered successfully!'})
 
-@app.route('/products/index', methods=['POST'])
-def index_products():
-    # Get product data from request
-    data = request.get_json()
-    
-    # Index product data in Elasticsearch
-    es.index(index='products', doc_type='product', body=data)
-    
-    return 'Product data indexed successfully'
-
-@app.route('/products/search', methods=['GET'])
-def search_products():
-    # Get search query from request
-    query = request.args.get('query')
-    
-    # Search product data in Elasticsearch
-    res = es.search(index='products', body={'query': {'match': {'name': query}}})
-    
-    return res
-
-@app.route('/products/update', methods=['PUT'])
-def update_products():
-    # Get product data from request
-    data = request.get_json()
-    
-    # Update product data in Elasticsearch
-    es.update(index='products', doc_type='product', body=data)
-    
-    return 'Product data updated successfully'
-
-@app.route('/products/delete', methods=['DELETE'])
-def delete_products():
-    # Get product data from request
-    data = request.get_json()
-    
-    # Delete product data in Elasticsearch
-    es.delete(index='products', doc_type='product', body=data)
-    
-    return 'Product data deleted successfully'
+@app.route('/login', methods=['POST'])
+def login():
+    # get the post data
+    post_data = request.get_json()
+    # encrypt the password
+    password = generate_password_hash(post_data.get('password'))
+    # check if the encrypted password matches the stored encrypted password
+    # ...
+    # return a response
+    if password == stored_password:
+        return jsonify({'message': 'Login successful!'})
+    else:
+        return jsonify({'message': 'Incorrect password!'})
 
 if __name__ == '__main__':
-   app.run()
+    app.run(debug=True)
