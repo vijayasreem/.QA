@@ -1,40 +1,50 @@
-@app.route('/payment', methods=['GET', 'POST'])
-def payment():
-  
-  # Handle GET request
-  if request.method == 'GET':
-    return render_template('payment.html')
-  
-  # Handle POST request
-  if request.method == 'POST':
-    # Get user's payment details
-    payment_method = request.form.get('payment_method')
-    card_number = request.form.get('card_number')
-    expiry_date = request.form.get('expiry_date')
-    cvv = request.form.get('cvv')
-    
-    # Redirect user to secure payment page
-    if payment_method == 'paypal':
-      return redirect(url_for('paypal'))
-    elif payment_method == 'stripe':
-      return redirect(url_for('stripe'))
-    else: # Credit/debit card payment
-      # Validate user's payment details
-      if card_number and expiry_date and cvv:
-        # Process payment
-        result = process_payment(card_number, expiry_date, cvv)
-        if result == 'success':
-          # Payment was successful
-          return redirect(url_for('payment_success'))
-        else:
-          # Payment failed
-          return redirect(url_for('payment_failed'))
-      else:
-        # Invalid payment details
-        flash('Please enter valid payment details')
-        return redirect(url_for('payment'))
+from flask import Flask, request
+from elasticsearch import Elasticsearch
 
-# Function to process payment
-def process_payment(card_number, expiry_date, cvv):
-  # TODO: Implement payment processing logic
-  return 'success' # or 'failure'
+app = Flask(__name__)
+
+# Connect to elasticsearch
+es = Elasticsearch()
+
+@app.route('/products/index', methods=['POST'])
+def index_products():
+    # Get product data from request
+    data = request.get_json()
+    
+    # Index product data in Elasticsearch
+    es.index(index='products', doc_type='product', body=data)
+    
+    return 'Product data indexed successfully'
+
+@app.route('/products/search', methods=['GET'])
+def search_products():
+    # Get search query from request
+    query = request.args.get('query')
+    
+    # Search product data in Elasticsearch
+    res = es.search(index='products', body={'query': {'match': {'name': query}}})
+    
+    return res
+
+@app.route('/products/update', methods=['PUT'])
+def update_products():
+    # Get product data from request
+    data = request.get_json()
+    
+    # Update product data in Elasticsearch
+    es.update(index='products', doc_type='product', body=data)
+    
+    return 'Product data updated successfully'
+
+@app.route('/products/delete', methods=['DELETE'])
+def delete_products():
+    # Get product data from request
+    data = request.get_json()
+    
+    # Delete product data in Elasticsearch
+    es.delete(index='products', doc_type='product', body=data)
+    
+    return 'Product data deleted successfully'
+
+if __name__ == '__main__':
+   app.run()
