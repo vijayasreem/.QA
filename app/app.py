@@ -1,34 +1,58 @@
-#Flask API
-
-from flask import Flask, request, jsonify
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, request, render_template
+import smtplib
 
 app = Flask(__name__)
 
-@app.route('/register', methods=['POST'])
-def register():
-    # get the post data
-    post_data = request.get_json()
-    # encrypt the password
-    password = generate_password_hash(post_data.get('password'))
-    # store the encrypted password in the database
-    # ...
-    # return a response
-    return jsonify({'message': 'User registered successfully!'})
+@app.route('/send_email', methods=['POST'])
+def send_email():
+    # Get the data from the request
+    data = request.get_json()
 
-@app.route('/login', methods=['POST'])
-def login():
-    # get the post data
-    post_data = request.get_json()
-    # encrypt the password
-    password = generate_password_hash(post_data.get('password'))
-    # check if the encrypted password matches the stored encrypted password
-    # ...
-    # return a response
-    if password == stored_password:
-        return jsonify({'message': 'Login successful!'})
-    else:
-        return jsonify({'message': 'Incorrect password!'})
+    # Create the email server
+    server = smtplib.SMTP('smtp.example.com', 587)
+
+    # Login to the email server
+    server.login("username", "password")
+
+    # Send the email
+    server.sendmail(
+        data['from'],
+        data['to'],
+        data['message']
+    )
+
+    # Log the status of the sent email
+    app.logger.info('Email sent!')
+
+    # Return a success message
+    return "Email sent successfully!"
+
+@app.route('/new_user/<user_id>', methods=['GET'])
+def new_user(user_id):
+    # Get the user data
+    user = get_user_data(user_id)
+
+    # Render the welcome email template
+    message = render_template('welcome_email.html', user=user)
+
+    # Create the email server
+    server = smtplib.SMTP('smtp.example.com', 587)
+
+    # Login to the email server
+    server.login("username", "password")
+
+    # Send the email
+    server.sendmail(
+        'noreply@example.com',
+        user['email'],
+        message
+    )
+
+    # Log the status of the sent email
+    app.logger.info('Welcome email sent!')
+
+    # Return a success message
+    return "Welcome email sent successfully!"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
