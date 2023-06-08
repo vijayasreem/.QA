@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index and Search Products</title>
+  </head>
+  <body>
+    <h1>Index and Search Products - Django App</h1>
+    <form method="post" action="{% url 'index' %}">
+        <input type="submit" value="Index Products">
+    </form>
+    <form method="get" action="{% url 'search' %}">
+        <input type="text" name="query" placeholder="Search Products">
+        <input type="submit" value="Search">
+    </form>
+  </body>
+</html>
