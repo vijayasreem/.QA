@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTrigger xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <status>Active</status>
+    <triggers>
+        <trigger>
+            <fullName>PaymentIntegration</fullName>
+            <status>Active</status>
+            <triggerOperation>before</triggerOperation>
+            <triggerType>insert,update</triggerType>
+        </trigger>
+        <trigger>
+            <fullName>PaymentResult</fullName>
+            <status>Active</status>
+            <triggerOperation>after</triggerOperation>
+            <triggerType>insert,update</triggerType>
+        </trigger>
+        <trigger>
+            <fullName>PaymentLogging</fullName>
+            <status>Active</status>
+            <triggerOperation>before</triggerOperation>
+            <triggerType>insert,update</triggerType>
+        </trigger>
+    </triggers>
+</ApexTrigger>

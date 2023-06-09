@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <fullName>User_Notification_Email__c</fullName>
+        <fullName>Payment_Method__c</fullName>
         <externalId>false</externalId>
-        <label>User Notification Email</label>
+        <label>Payment Method</label>
         <required>true</required>
-        <trackHistory>false</trackHistory>
-        <type>Email</type>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Payment_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment URL</label>
+        <required>true</required>
+        <type>URL</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>true</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Details</label>
+        <required>true</required>
+        <type>TextArea</type>
     </fields>
 </CustomObject>
