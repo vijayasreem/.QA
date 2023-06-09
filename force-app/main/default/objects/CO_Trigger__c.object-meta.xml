@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
-    <nameField>Name</nameField>
-    <fields>
-        <fullName>Welcome_Email_Template__c</fullName>
-        <externalId>false</externalId>
-        <label>Welcome Email Template</label>
-        <length>255</length>
-        <required>true</required>
-        <type>Text</type>
-    </fields>
+  <nameField>Name</nameField>
+  <fields>
+    <fullName>Is_New__c</fullName>
+    <externalId>false</externalId>
+    <label>Is New</label>
+    <required>true</required>
+    <type>Checkbox</type>
+  </fields>
 </CustomObject>
