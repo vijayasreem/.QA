@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Trigger EmailNotifications on User (after insert)>
+  <Statements>
+    <Statement>
+      <Actions>
+        <Action>
+          <!-- Create list of new users -->
+          <Variable name="newUsers" type="List<User>"/>
+          <Expression>
+            <MethodCall>
+              <Name>Trigger.new</Name>
+            </MethodCall>
+          </Expression>
+          <Assign>
+            <VariableRef>newUsers</VariableRef>
+          </Assign>
+        </Action>
+        <Action>
+          <!-- Get current user info -->
+          <Variable name="currentUser" type="User"/>
+          <Expression>
+            <MethodCall>
+              <Name>SELECT</Name>
+              <Arguments>
+                <Argument>
+                  <Name>Id</Name>
+                </Argument>
+                <Argument>
+                  <Name>Name</Name>
+                </Argument>
+                <Argument>
+                  <Name>Email</Name>
+                </Argument>
+              </Arguments>
+              <TargetObject>
+                <Name>User</Name>
+              </TargetObject>
+              <WhereCondition>
+                <Expression>
+                  <Comparison>
+                    <Name>Id</Name>
+                    <Operator>=</Operator>
+                    <MethodCall>
+                      <Name>UserInfo.getUserId</Name>
+                    </MethodCall>
+                  </Comparison>
+                </Expression>
+              </WhereCondition>
+            </MethodCall>
+          </Expression>
+          <Assign>
+            <VariableRef>currentUser</VariableRef>
+          </Assign>
+        </Action>
+        <Action>
+          <!-- Create email templates -->
+          <Variable name="welcomeEmail" type="Messaging.SingleEmailMessage"/>
+          <Expression>
+            <ConstructorCall>
+              <Name>Messaging.SingleEmailMessage</Name>
+            </ConstructorCall>
+          </Expression>
+          <Assign>
+            <VariableRef>welcomeEmail</VariableRef>
+          </Assign>
+          <Variable name="resetPasswordEmail" type="Messaging.SingleEmailMessage"/>
+          <Expression>
+            <ConstructorCall>
+              <Name>Messaging.SingleEmailMessage</Name>
+            </ConstructorCall>
+          </Expression>
+          <Assign>
+            <VariableRef>resetPasswordEmail</VariableRef>
+          </Assign>
+          <Variable name="orderConfirmationEmail" type="Messaging.SingleEmailMessage"/>
+          <Expression>
+            <ConstructorCall>
+              <Name>Messaging.SingleEmailMessage</Name>
+            </ConstructorCall>
+          </Expression>
+          <Assign>
+            <VariableRef>orderConfirmationEmail</VariableRef>
+          </Assign>
+          <Variable name="accountActivityAlertEmail" type="Messaging.SingleEmailMessage"/>
+          <Expression>
+            <ConstructorCall>
+              <Name>Messaging.SingleEmailMessage</Name>
+            </ConstructorCall>
+          </Expression>
+          <Assign>
+            <VariableRef>accountActivityAlertEmail</VariableRef>
+          </Assign>
+        </Action>
+        <Action>
+          <!-- Set up email templates -->
+          <MethodCall>
+            <Name>welcomeEmail.setTemplateId</Name>
+            <Arguments>
+              <Argument>
+                <Literal>00X1a0000008vN4</Literal>
+              </Argument>
+            </Arguments>
+          </MethodCall>
+          <MethodCall>
+            <Name>resetPasswordEmail.setTemplateId</Name>
+            <Arguments>
+              <Argument>
+                <Literal>00X1a0000008vN5</Literal>
+              </Argument>
+            </Arguments>
+          </MethodCall>
+          <MethodCall>
+            <Name>orderConfirmationEmail.setTemplateId</Name>
+            <Arguments>
+              <Argument>
+                <Literal>00X1a0000008vN6</Literal>
+              </Argument>
+            </Arguments>
+          </MethodCall>
+          <MethodCall>
+            <Name>accountActivityAlertEmail.setTemplateId</Name>
+            <Arguments>
+             

@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
-  <nameField>Name</nameField>
-  <fields>
-    <fullName>Is_New__c</fullName>
-    <externalId>false</externalId>
-    <label>Is New</label>
-    <required>true</required>
-    <type>Checkbox</type>
-  </fields>
+    <fields>
+        <fullName>User_Notification_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>User Notification Email</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+    </fields>
 </CustomObject>
