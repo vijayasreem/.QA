@@ -1,0 +1,53 @@
+/* Payment Integration CSS */
+
+.payment-form {
+    padding: 10px;
+}
+
+.payment-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.payment-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.payment-form button:hover {
+    background-color: #45a049;
+}
+
+.payment-form label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.payment-form .payment-options {
+    margin-top: 10px;
+}
+
+.payment-form .payment-options label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.payment-form .payment-options input {
+    margin-right: 5px;
+    width: auto;
+}
+
+.payment-form .message-container {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
