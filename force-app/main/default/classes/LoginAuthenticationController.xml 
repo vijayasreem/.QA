@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexClass xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <status>Active</status>
+    <userStory>Create a login and authentication system for secure access.</userStory>
+    <acceptanceCriteria>1. The login page should be secure and encrypted. 2. The user should be able to enter their credentials (username and password) to log in. 3. The user should be able to reset their password if they forget it. 4. The user should be able to log out of the application when they are done.</acceptanceCriteria>
+    <definitionOfDone>1. The login page should be tested for security and encryption. 2. The user credentials should be verified and authenticated. 3. The password reset functionality should be tested. 4. The logout functionality should be tested. 5. The login page should be deployed to the production environment.</definitionOfDone>
+</ApexClass>

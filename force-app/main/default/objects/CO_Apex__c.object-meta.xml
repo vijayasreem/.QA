@@ -1,42 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <fullName>Name</fullName>
-        <label>Name</label>
+        <fullName>Username__c</fullName>
+        <label>Username</label>
         <type>Text</type>
-        <length>80</length>
+        <length>50</length>
         <required>true</required>
     </fields>
     <fields>
-        <fullName>UserId</fullName>
-        <label>User Id</label>
-        <referenceTo>User</referenceTo>
-        <type>Lookup</type>
-        <required>true</required>
-    </fields>
-    <fields>
-        <fullName>Action</fullName>
-        <label>Action</label>
+        <fullName>Password__c</fullName>
+        <label>Password</label>
         <type>Text</type>
-        <length>255</length>
+        <length>50</length>
         <required>true</required>
     </fields>
-    <fields>
-        <fullName>Status</fullName>
-        <label>Status</label>
-        <type>Text</type>
-        <length>255</length>
-        <required>true</required>
-    </fields>
-    <fields>
-        <fullName>ErrorMessage</fullName>
-        <label>Error Message</label>
-        <type>TextArea</type>
-        <length>255</length>
-        <required>true</required>
-    </fields>
-    <nameField>
-        <label>Name</label>
-        <type>Text</type>
-    </nameField>
 </CustomObject>
